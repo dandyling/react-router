@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Learn React Router</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+        <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/2.0.0/ReactRouter.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <style>
+        html, body, .contain {
+            height: 100%;
+        }
+    </style>
+    <body>
+        <div id="container" class="contain">
+
+        </div>
+
+        <script type="text/babel">
+            //var { Router, Route, IndexRoute, Link, browserHistory } = ReactRouter
+            var Router = ReactRouter.Router;
+            var Route = ReactRouter.Route;
+            
+            var MainLayout = React.createClass({
+                render: function() {
+                    return (
+                        <div >
+                            HereamI
+                            /*<header className="primary-header"></header>
+                            <aside className="primary-aside"></aside>
+                            <main>
+                                { this.props.children }
+                            </main>*/
+                        </div>
+                    );
+                }
+            });
+            
+            var SearchLayout = React.createClass({
+                render: function() {
+                    return (
+                        <div className="search">
+                            <header className="search-header"></header>
+                            <div className="results">
+                                { this.props.children }
+                            </div>
+                            <div className="search-footer pagination"></div>
+                        </div>
+                    );
+                }
+            });
+            
+            var UserList = React.createClass({
+                render: function() {
+                    return (
+                        <ul className="user-list">
+                            <li>Dan</li>
+                            <li>Ryan</li>
+                            <li>Michael</li>
+                        </ul>
+                    );
+                }
+            });
+            
+            
+            var Home = React.createClass({
+                render: function() {
+                    return (
+                        <div className="app">
+                            <header className="primary-header"></header>
+                            <aside className="primary-aside"></aside>
+                            <main>
+                                <div class="search">
+                                    <header class="search-header"></header>
+                                    <div class="results">
+                                        <ul class="user-list">
+                                            <li>Dan</li>
+                                            <li>Ryan</li>
+                                            <li>Michael</li>
+                                        </ul>
+                                    </div>
+                                    <div class="search-footer pagination"></div>
+                                </div>
+                            </main>
+                        </div>
+                    );
+                }
+            });
+
+            ReactDOM.render((
+                <Router>
+                    <Route component={MainLayout}>
+                        <Route path="/" component={Home} />
+                        <Route component={SearchLayout}>
+                            <Route path="users" component={UserList} />
+                            <Route path="widgets" component={WidgetList} />
+                        </Route>
+                    </Route>
+                </Router>
+                ), document.querySelector('#container')
+            );
+        </script>
+    </body>
+</html>
